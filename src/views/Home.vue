@@ -1,15 +1,31 @@
 <template>
   <div class="page-wrapper">
-    <h1 class="home-page-title">{{ appTitle }}</h1>
-    <img alt="logo-bento" class="logo" src="@/assets/img/bento-starter.svg" />
+    <div class="card-wrapper">
+      <div class="card-top">
+        <img src="@/assets/img/image-victor.jpg" alt="Victor Crest" />
 
-    <a
-      rel="noopener"
-      class="documentation-link"
-      target="_blank"
-      href="https://bento-starter.netlify.com/"
-      >Documentation →</a
-    >
+        <p class="user-name bold-text">
+          Victor Crest
+          <span>26</span>
+        </p>
+        <p class="user-city">London</p>
+      </div>
+
+      <div class="card-bottom">
+        <div class="card-stats">
+          <p class="stat-number bold-text">80K</p>
+          <p class="stat-type">Followers</p>
+        </div>
+        <div class="card-stats">
+          <p class="stat-number bold-text">803K</p>
+          <p class="stat-type">Likes</p>
+        </div>
+        <div class="card-stats">
+          <p class="stat-number bold-text">1.4K</p>
+          <p class="stat-type">Photos</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -44,26 +60,64 @@ export default {
   justify-content: center;
   align-items: center;
 
-  .logo {
-    margin-bottom: 3rem;
-  }
-
-  .home-page-title {
+  .card-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+    background: $light;
+    border-radius: 15px;
+    box-shadow: 0 50px 100px -20px rgba(8, 70, 94, 0.504835);
     text-align: center;
   }
 
-  .documentation-link {
-    display: inline-block;
-    font-size: 1.2rem;
-    color: #fff;
-    background-color: #5d6788;
-    padding: 0.8rem 1.6rem;
-    border-radius: 4px;
-    transition: background-color 0.1s ease;
-    box-sizing: border-box;
-    text-decoration: none;
-    width: fit-content;
-    font-weight: 500;
+  .card-top {
+    position: relative;
+    width: 100%;
+    padding-bottom: 28px;
+    background: url('../assets/img/bg-pattern-card.svg') no-repeat;
+    background-size: auto 140px;
+    border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid $borderColor;
+
+    img {
+      margin: 87px auto 24px;
+      border: 5px solid $light;
+      border-radius: 50%;
+    }
+
+    .user-name {
+      span {
+        margin-left: 8px;
+        font-weight: 400;
+      }
+    }
+
+    .user-city {
+      margin-top: 10px;
+    }
+  }
+
+  .card-bottom {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 24px 40px;
+    text-align: center;
+
+    .card-stats {
+      width: calc(100% / 3);
+    }
+
+    .stat-type {
+      margin-top: 10px;
+      font-size: 10px;
+      line-height: 10px;
+      letter-spacing: 1.5px;
+    }
   }
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
     <div class="main-wrapper">
       <router-view />
     </div>
@@ -20,13 +19,12 @@
   </div>
 </template>
 <script>
-import NavBar from '@/components/NavBar'
 import NewContentAvailableToastr from '@/components/NewContentAvailableToastr'
 import AppleAddToHomeScreenModal from '@/components/AppleAddToHomeScreenModal'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: { NavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal },
+  components: { NewContentAvailableToastr, AppleAddToHomeScreenModal },
   computed: {
     ...mapGetters('app', ['newContentAvailable']),
     ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp'])
@@ -39,12 +37,25 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/theme/variables.scss';
+
 body {
   margin: 0;
 
-  a {
-    font-weight: 500;
-    text-decoration: none;
+  * {
+    box-sizing: border-box;
+  }
+
+  p {
+    margin: 0;
+    font-family: $textFont;
+    font-weight: 400;
+  }
+
+  .bold-text {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
   }
 
   #app {
@@ -74,16 +85,24 @@ body {
     }
 
     .main-wrapper {
-      margin-top: 3.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      height: 100vh;
       padding: 20px;
+      background: url('./assets/img/bg-pattern-bottom.svg') right -200px bottom -650px no-repeat,
+        url('./assets/img/bg-pattern-top.svg') left -300px top -550px no-repeat,
+        $primaryColor1;
+
+      @media (max-width: 767px) {
+        background-position: right -650px bottom -650px,
+          left -650px top -650px;
+      }
 
       .page-wrapper {
-        width: 60%;
-        margin: auto;
-
-        @media screen and (max-width: 1000px) {
-          width: 100%;
-        }
+        width: 100%;
+        max-width: 1440px;
       }
     }
   }
